@@ -36,14 +36,6 @@ void PRIVMSG::execute(std::vector<std::string> command, ClientInfo *client)
     }
     else
     {
-		for (i = 0; i < server->getClients().size(); ++i)
-		{
-			if (client->nickname != server->getClients()[i].nickname)
-			{
-				sender(client->client_fd, Prefix(*client) +  " 401 " + client->nickname + " " + target + " :No such nick/channel\r\n");
-				return;
-			}
-		}
         for (i = 0; i < server->getChannels().size(); i++)
         {
             if (server->getChannels()[i].name == target)
